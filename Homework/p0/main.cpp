@@ -3,9 +3,15 @@
 #include<eigen3/Eigen/Dense>
 #include<iostream>
 
+using namespace std;
+
+#define PI acos(-1)
+
 int main(){
 
     // Basic Example of cpp
+    clog << "Hello World" << std::endl;
+
     std::cout << "Example of cpp \n";
     float a = 1.0, b = 2.0;
     std::cout << a << std::endl;
@@ -44,6 +50,19 @@ int main(){
     // matrix multiply i * j
     // matrix multiply vector i * v
 
-    
+    std::cout << "Homework 1 \n";
+    Eigen::Vector3f p(2.0f,1.0f,1.0f);
+    Eigen::Matrix3f transform,rotation;
+    float mX = 1.0,mY = 2.0;
+    float radian = 45/180*PI;
+    transform << 1,0,1,
+                 0,1,2,
+                 0,0,1,     
+    rotation << cos(radian), -1*sin(radian), mX, 
+        sin(radian), cos(radian), mY, 
+        0.0, 0.0, 1.0;
+    Eigen::Vector3f result = transform*rotation*p;
+    cout << result << endl;
+
     return 0;
 }
